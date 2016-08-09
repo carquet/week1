@@ -5,16 +5,23 @@ class Blog
 	def add_post(post)
 		@container<<post	
 	end
-
-	def publish_front_page
+	def organize_by_date
+		date_sorted = @container.sort do|post1, post2|
+		post2.date <=>post1.date
+		end
+		date_sorted.each do |post|
+			puts "#{post.title}"
+			puts "***************"
+			puts "#{post.text}"
+			puts "-----------" 
+		end
 	end
-
 end
 
 
 class Post
-	
-	def initialize(title, date, text) 
+	attr_reader :title, :date, :text
+	def initialize title, date, text 
 		@title = title
 		@date = date
 		@text = text
@@ -22,10 +29,10 @@ class Post
 	
 end
 
-laetitia = Blog.new
-day1 = Post.new("The First Day", "09/08/2016", "It's been a hard day work")
-day2 = Post.new("the second day", "10/08/2016", "Woaw")
-day3 = Post.new("The third day", "11/08/2016", "jesus!!")
-laetitia.add_post(day1)
-laetitia.add_post(day2)
-laetitia.add_post(day3)
+blog = Blog.new
+blog.add_post Post.new("Post title 1", Time.local(2000,01,20), "hello hello hello")
+blog.add_post Post.new("Post title 2", Time.local(2001,02,20), "Goodbye, goodbye")
+blog.add_post Post.new("Post title 3", Time.local(2000,01,21), "Bonjour bonjour")
+blog.organize_by_date
+
+#blog.publish_front_page
