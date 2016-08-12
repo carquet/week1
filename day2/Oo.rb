@@ -1,10 +1,11 @@
 class Car 
-	def initialize noise
+	def initialize noise engine
 		@noise = noise
+		@engine = engine
 		@list_of_cities = load_cities
 	end
 	def make_noise
-		puts @noise
+		puts @noise + @engine.engine_noise
 	end
 	def self.speed_control
 		puts "What is your current speed?"
@@ -13,6 +14,14 @@ class Car
 			puts "You should slow down !"
 		end
 	end
+end
+
+
+class Engine
+		def initialize sound 
+		@sound
+		end
+end
 
 #	def visit_city(city)
 #		IO.read("cities.txt")
@@ -32,8 +41,8 @@ class Car
 #			puts "The cities you visited are: #{city}"
 #		end
 #	end
-end
 
+=begin
 class RacingCar < Car
 	def initialize
 		@noise = "brooooom"
@@ -49,11 +58,12 @@ class Person
 	end
 end
 
+=end
 
-my_car = Car.new "pouet pouet"
+my_car = Car.new ("pouet pouet",Engine.new)
 # '''other_car = Car.new "honk honk"
 # my_car.make_noise
 # other_car.make_noise'''
 #my_car.speed_control
-my_car.record_visit("Madrid")
-my_car.cities
+#my_car.record_visit("Madrid")
+#my_car.cities

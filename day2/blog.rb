@@ -19,6 +19,9 @@ class Blog
 			puts "#{post.text}"
 			puts "-----------" 
 		end
+
+	def show_three
+		
 	end
 end
 
